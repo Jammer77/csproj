@@ -6,7 +6,7 @@ namespace prj2json
     {
         public static string CreateBuildCommand(string projectName, string configuration)
         {
-            return $"msbuild {projectName} / p:Configuration = {configuration}";
+            return $"msbuild {projectName} /p:Configuration = {configuration}";
         }
 
         public static string CreateRunCommand(string path)

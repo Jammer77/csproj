@@ -1,0 +1,7 @@
+.vscode
+.vs
+obj
+packages
+prj2json.csproj.user
+bin/Debug/*.*
+!bin/Debug/prj2json.csproj

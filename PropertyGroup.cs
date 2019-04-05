@@ -43,18 +43,34 @@ namespace prj2json
         [XmlElement]
         public string OutputPath { get; set; }
 
-//        public string Configuration
-//        {
-//            get
-//            {
-//                throw new NotImplementedException();
-//            }
-//        }
-//
         //TODO: use path !!
-        public string Path => $"{OutputPath}\\{AssemblyName}.{OutputType}";
+        public string Path => System.IO.Path.Combine(OutputPath.Replace('\\', System.IO.Path.DirectorySeparatorChar ), $"{AssemblyName}{GetExtension(OutputType)}");
+       
+        private string GetExtension(string type)
+        {
+            string result;
+            switch (type)
+            {
+                case "Exe":
+                    result = ".exe";
+                    break;
+                    //TODO add another cases
+                default:
+                    result = "";
+                    break;
+            }
+            return result;
+        }
         public string ProjectName => this.Parent.Name; 
 
         public SharpProject Parent { set; get; }
+        public string Configuration 
+        { 
+            get
+            {
+                string configuration = "DEBUG";
+                return configuration;
+            }
+        }
     }
 }
